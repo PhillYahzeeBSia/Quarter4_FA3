@@ -25,7 +25,29 @@ function generateShape(num) {
       }
       return result;
   }
+var number = getNumber();
+var shape = generateShape(number);
+document.getElementById("output").innerHTML = shape;
+
   
-  var number = getNumber();
-  var shape = generateShape(number);
-  document.getElementById("output").innerHTML = shape;
+var contacts = [];
+
+function updateContactDisplay() {
+  document.getElementById("contactDisplay").textContent = contacts.join(" ");
+  }
+function addContact() {
+  var input = document.getElementById("contactInput");
+  var name = input.value.trim();
+  if (name !== " ") {
+    if (contacts.length >= 7) {
+      contacts.shift();
+      }
+    contacts.push(name); 
+    input.value = " "; 
+    updateContactDisplay();
+    }
+  }
+function removeContact() {
+  contacts.pop();
+  updateContactDisplay();
+  }
